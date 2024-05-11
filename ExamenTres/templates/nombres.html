@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Personas</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/estilosNombres.css">
+</head>
+<body>
+<div class="container">
+    <form action="/nombres" method="POST">
+        <label for="nombre1">Nombre 1:</label>
+        <input type="text" id="nombre1" name="nombre1" value="{{nombre1}}" required>
+        <br>
+        <label for="nombre2">Nombre 2:</label>
+        <input type="text" id="nombre2" name="nombre2" value="{{nombre2}}" required>
+        <br>
+        <label for="nombre3">Nombre 3:</label>
+        <input type="text" id="nombre3" name="nombre3" value="{{nombre3}}" required>
+        <br>
+        <button type="submit">Enviar</button>
+        {% if mensaje_error %}
+        <p>{{ mensaje_error }}</p>
+        {% endif %}
+
+        {% if nombre_mas_largo is defined %}
+        <div class="resultado">
+            <p>El nombre con mayor cantidad de carácteres es: {{ nombre_mas_largo }}</p>
+            <p>El nombre tiene: {{ longitud }} caracteres</p>
+        </div>
+        {% endif %}
+    </form>
+</div>
+</body>
+</html>
